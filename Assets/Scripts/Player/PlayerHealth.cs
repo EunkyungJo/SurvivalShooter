@@ -14,14 +14,12 @@ public class PlayerHealth : MonoBehaviour
     public float flashSpeed = 5f;
     public Color flashColour = new Color(1f, 0f, 0f, 0.1f);
 
-
     Animator anim;
     AudioSource playerAudio;
     PlayerMovement playerMovement;
     PlayerShooting playerShooting;
     bool isDead;
     bool damaged;
-
 
     void Awake ()
     {
@@ -46,15 +44,11 @@ public class PlayerHealth : MonoBehaviour
         damaged = false;
     }
 
-
     public void TakeDamage (int amount) // amount = the amount of damage player took
     {
 		damaged = true; //for flickering image when damaged
-
         currentHealth -= amount;
-
         healthSlider.value = currentHealth;
-
         playerAudio.Play ();
 
         if(currentHealth <= 0 && !isDead)// not already dead 
@@ -67,14 +61,10 @@ public class PlayerHealth : MonoBehaviour
     void Death ()
     {
         isDead = true;
-
         playerShooting.DisableEffects ();
-
         anim.SetTrigger ("Die"); // play animation. parameter is "Dead" 
-
         playerAudio.clip = deathClip;
         playerAudio.Play ();
-
         playerMovement.enabled = false; // no more movement 
         playerShooting.enabled = false;
     }

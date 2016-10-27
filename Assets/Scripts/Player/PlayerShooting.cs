@@ -6,7 +6,6 @@ public class PlayerShooting : MonoBehaviour
     public float timeBetweenBullets = 0.15f;
     public float range = 100f; //distance that gun can reach
 
-
     float timer; // only attack when time is right
     Ray shootRay; // to know what it is hit 
     RaycastHit shootHit; //return back to us whatever we've hit 
@@ -17,7 +16,6 @@ public class PlayerShooting : MonoBehaviour
     Light gunLight;
     float effectsDisplayTime = 0.2f; 
 
-
     void Awake ()
     {
         shootableMask = LayerMask.GetMask ("Shootable");
@@ -26,8 +24,7 @@ public class PlayerShooting : MonoBehaviour
         gunAudio = GetComponent<AudioSource> ();
         gunLight = GetComponent<Light> ();
     }
-
-
+		
     void Update ()
     {
         timer += Time.deltaTime;
@@ -49,22 +46,16 @@ public class PlayerShooting : MonoBehaviour
         gunLine.enabled = false;
         gunLight.enabled = false;
     }
-
-
+		
     void Shoot ()
     {
         timer = 0f;
-
         gunAudio.Play ();
-
         gunLight.enabled = true;
-
         gunParticles.Stop (); // prevent replaying particles already exist 
-        gunParticles.Play ();
-
+		gunParticles.Play ();
         gunLine.enabled = true;
         gunLine.SetPosition (0, transform.position); // This is the first point. We have to Calculate second point.
-
         shootRay.origin = transform.position;
         shootRay.direction = transform.forward; // z axis plus number is considered forward 
 

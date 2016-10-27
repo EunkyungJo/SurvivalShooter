@@ -31,7 +31,6 @@ public class PlayerMovement : MonoBehaviour
 	{
 		movement.Set (h, 0f, v);
 		movement = movement.normalized * speed * Time.deltaTime;
-
 		playerRigidbody.MovePosition (transform.position + movement);
 	}
 
@@ -44,7 +43,6 @@ public class PlayerMovement : MonoBehaviour
 		{
 			Vector3 playerToMouse = floorHit.point - transform.position;
 			playerToMouse.y = 0f;
-
 			Quaternion newRotation = Quaternion.LookRotation (playerToMouse);
 			playerRigidbody.MoveRotation (newRotation);
 
@@ -56,5 +54,4 @@ public class PlayerMovement : MonoBehaviour
 		bool walking = h != 0f || v != 0f;
 		anim.SetBool ("IsWalking", walking);
 	}
-
 }
